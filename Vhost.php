@@ -48,7 +48,7 @@ class Vhost extends \Vhost{
 		if(is_dir($this->getDataDir())){
 			\exec("rm -r ".$this->getDataDir());
 			\exec("rm -r ".__DIR__);
-			\exec("rm ".__DIR__."/../composer.lock");
+			\exec("rm ".__DIR__."/../../composer.lock");
 		}
 		$this->unlock();
 	}
