@@ -43,9 +43,13 @@ class Vhost extends \Vhost{
 
 	protected function clean()
 	{
+		$this->lock();
 		//!!!this shit code is for example clean delete data dir and vhost dir never do!!!
-		\exec("rm -r ".$this->getDataDir());
-		\exec("rm -r ".__DIR__);
-		\exec("rm ../composer.lock");
+		if(is_dir($this->getDataDir())){
+			\exec("rm -r ".$this->getDataDir());
+			\exec("rm -r ".__DIR__);
+			\exec("rm ".__DIR__."/../composer.lock");
+		}
+		$this->unlock();
 	}
 }
