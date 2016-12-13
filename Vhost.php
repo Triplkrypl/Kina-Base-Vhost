@@ -10,9 +10,19 @@ class Vhost extends \Vhost{
 
 	public function onLoad()
 	{
-		$this->serverLog("Kina is ready and waiting for you here http://127.0.0.1","Info");
+		$ip_local = new Ip\Local();
+		$ips = $ip_local->getAllInterfaces();
+		$hello_message = "Kina is ready";
+		if(count($ips) > 0){
+			$hello_message .= " and waiting for you here ".\implode(" or ",$ips);
+		}
+		$this->serverLog($hello_message,"Info");
 	}
 
+	/**
+	 * @param \Server\Request $request
+	 * @return bool
+	 */
 	public function onPhpRequestChoice(\Server\Request $request)
 	{
 		return false;
