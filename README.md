@@ -26,5 +26,5 @@ class Vhost extends \Vhost{
 After first installation of package is "data" folder from root repository copied in to plugin data directory, you can
 put here some inicialization data (configuration, ...), after next installation on update package data is not changed.
 
-After all installation or updates is "data/static" form root repository copied in to vhost data directory /static,
+After all installation or updates is "data/static" from root repository copied in to vhost data directory /static,
 it is allow you to update you html, css, js, images.
