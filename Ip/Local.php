@@ -8,9 +8,10 @@ namespace Base\Ip;
  */
 class Local {
 	/**
+	 * @param \Server\Config $config
 	 * @return string[]
 	 */
-	public function getAllInterfaces(){
+	public function getAllInterfaces(\Server\Config $config){
 		$ips = array();
 		$output = array();
 		\exec("ifconfig | grep inet | grep netmask",$output);
@@ -19,7 +20,7 @@ class Local {
 			\preg_match("/inet (.*)  netmask/",$row,$matches);
 			if(\array_key_exists(1,$matches))
 			{
-				$ports = $this->getServerConfig()->get("ports");
+				$ports = $config->get("ports");
 				foreach($ports as $port){
 					if($port == 80){
 						$ips[] = "http://".$matches[1];

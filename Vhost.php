@@ -10,7 +10,7 @@ class Vhost extends \Vhost{
 
 	public function onLoad()
 	{
-		$ip_local = new Ip\Local();
+		$ip_local = new Ip\Local($this->getServerConfig());
 		$ips = $ip_local->getAllInterfaces();
 		$hello_message = "Kina is ready";
 		if(count($ips) > 0){
